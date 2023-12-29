@@ -1,0 +1,15 @@
+version: "2.1"
+services:
+  jackett:
+    image: lscr.io/linuxserver/jackett:latest
+    container_name: jackett
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /media/hdd/appdata/Jackett:/config
+      - /media/hdd/data/torrents:/downloads
+    ports:
+      - 9117:9117
+    restart: unless-stopped
