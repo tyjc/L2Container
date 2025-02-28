@@ -48,7 +48,7 @@ services:
       - TZ=Etc/UTC
       - DELUGE_LOGLEVEL=error #optional
       volumes:
-        - /data/media/appdata/deluge/config:/config
+        - /data/media/appdata/deluge:/config
         - /data/media/torrents:/downloads
     ports:
       - 8112:8112
