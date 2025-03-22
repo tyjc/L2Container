@@ -4,7 +4,9 @@ services:
         image: lscr.io/linuxserver/radarr:latest
         container_name: radarr
         environment:
-            - PUID=1000 - PGID=1000 - TZ=Etc/UTC
+            - PUID=1000 
+            - PGID=1000 
+            - TZ=Etc/UTC
         volumes:
             - /data/media_stack/appdata/radarr:/config 
             - /data/media_stack:/data
