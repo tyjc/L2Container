@@ -6,8 +6,8 @@ services:
         environment:
             - PUID=1000 - PGID=1000 - TZ=Etc/UTC
         volumes:
-            - /data/media/appdata/radarr:/config 
-            - /data/media:/data
+            - /data/media_stack/appdata/radarr:/config 
+            - /data/media_stack:/data
         ports:
             - 7878:7878
         restart: unless-stopped
@@ -19,8 +19,8 @@ services:
             - PGID=1000
             - TZ=Etc/UTC
         volumes:
-            - /data/media/appdata/sonarr:/config
-            - /data/media:/data
+            - /data/media_stack/appdata/sonarr:/config
+            - /data/media_stack:/data
         ports:
             - 8989:8989
         restart: unless-stopped
@@ -32,8 +32,8 @@ services:
             - PGID=1000
             - TZ=Etc/UTC
         volumes:
-            - /data/media/appdata/jackett:/config
-            - /data/media/torrents:/downloads
+            - /data/media_stack/appdata/jackett:/config
+            - /data/media_stack/torrents:/downloads
         ports:
             - 9117:9117
         restart: unless-stopped
@@ -46,8 +46,8 @@ services:
             - TZ=Etc/UTC
             - DELUGE_LOGLEVEL=error
         volumes:
-            - /data/media/appdata/deluge:/config
-            - /data/media/torrents:/downloads
+            - /data/media_stack/appdata/deluge:/config
+            - /data/media_stack/torrents:/downloads
         ports:
             - 8112:8112
             - 6881:6881
@@ -64,8 +64,8 @@ services:
             - TZ=Etc/UTC
             - VERSION=docker
         volumes:
-            - /data/media/appdata/plex:/config
-            - /data/media:/data
+            - /data/media_stack/appdata/plex:/config
+            - /data/media_stack:/data
         restart: unless-stopped
     flaresolverr:
         image: ghcr.io/flaresolverr/flaresolverr:latest
