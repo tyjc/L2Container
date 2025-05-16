@@ -40,21 +40,20 @@ services:
             - 9117:9117
         restart: unless-stopped
     deluge:
-        image: lscr.io/linuxserver/deluge:latest
-        container_name: deluge
+        image: lscr.io/linuxserver/transmission:latest
+        container_name: transmission
         environment:
             - PUID=1000
             - PGID=1000
             - TZ=Etc/UTC
             - DELUGE_LOGLEVEL=error
         volumes:
-            - /mnt/data/appdata/deluge:/config
+            - /mnt/data/appdata/transmission:/config
             - /mnt/data/torrents:/data/torrents
         ports:
-            - 8112:8112
-            - 6881:6881
-            - 6881:6881/udp
-            - 58846:58846
+            - 9091:9091
+            - 51413:51413
+            - 51413:51413/udp
         restart: unless-stopped
     plex:
         image: lscr.io/linuxserver/plex:latest
