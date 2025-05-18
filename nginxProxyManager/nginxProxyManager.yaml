@@ -8,5 +8,5 @@ services:
       - '81:81'
       - '443:443'
     volumes:
-      - /media/hdd/appdata/nginx:/data
-      - /media/hdd/appdata/nginx/letsencrypt:/etc/letsencrypt
+      - /mnt/data/appdata/nginx:/data
+      - /mnt/data/appdata/nginx/letsencrypt:/etc/letsencrypt
