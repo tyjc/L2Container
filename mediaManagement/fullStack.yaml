@@ -48,6 +48,9 @@ services:
             - TZ=Etc/UTC
             - WEBUI_PORT=8080
             - TORRENTING_PORT=6881
+        resources:
+            limits:
+                memory: 8000M
         volumes:
             - /mnt/data/appdata/qbit:/config
             - /mnt/data/torrents:/data/torrents
