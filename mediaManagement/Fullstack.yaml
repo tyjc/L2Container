@@ -1,0 +1,90 @@
+services:
+    qbittorrent:
+        image: lscr.io/linuxserver/qbittorrent:latest
+        container_name: qbittorrent
+        restart: unless-stopped
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=Etc/UTC
+            - WEBUI_PORT=8080
+            - TORRENTING_PORT=6881
+        volumes:
+            - /mnt/data/appdata/qbit:/config
+            - /mnt/data/torrents:/data/torrents
+        ports:
+            - 8080:8080
+            - 6881:6881
+            - 6881:6881/udp
+    plex:
+        image: lscr.io/linuxserver/plex:latest
+        container_name: plex
+        network_mode: host
+        restart: unless-stopped
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=Etc/UTC
+            - VERSION=docker
+        volumes:
+            - /mnt/data/appdata/plex:/config
+            - /mnt/data/media:/data/media
+    radarr:
+        image: lscr.io/linuxserver/radarr:latest
+        container_name: radarr
+        restart: unless-stopped
+        environment:
+            - PUID=1000 
+            - PGID=1000 
+            - TZ=Etc/UTC
+        volumes:
+            - /mnt/data/appdata/radarr:/config 
+            - /mnt/data:/data
+        ports:
+            - 7878:7878
+    sonarr:
+        image: lscr.io/linuxserver/sonarr:latest
+        container_name: sonarr
+        restart: unless-stopped
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=Etc/UTC
+        volumes:
+            - /mnt/data/appdata/sonarr:/config
+            - /mnt/data:/data
+        ports:
+            - 8989:8989
+    jackett:
+        image: lscr.io/linuxserver/jackett:latest
+        container_name: jackett
+        restart: unless-stopped
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=Etc/UTC
+        volumes:
+            - /mnt/data/appdata/jackett:/config
+            - /mnt/data:/data
+        ports:
+            - 9117:9117
+    autobrr:
+      image: ghcr.io/autobrr/autobrr:latest
+      container_name: autobrr
+      restart: unless-stopped
+      environment:
+            - PUID=1000
+            - PGID=1000
+      volumes:
+            - /mnt/data/autobrr/config:/config
+      ports:
+            - 7474:7474
+    byparr:
+      image: ghcr.io/thephaseless/byparr:latest
+      restart: unless-stopped
+      init: true
+      build:
+        context: .
+        dockerfile: Dockerfile
+      ports:
+            - 8191:8191
