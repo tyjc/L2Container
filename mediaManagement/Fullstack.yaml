@@ -81,10 +81,7 @@ services:
             - 7474:7474
     byparr:
       image: ghcr.io/thephaseless/byparr:latest
+      container_name: byparr
       restart: unless-stopped
-      init: true
-      build:
-        context: .
-        dockerfile: Dockerfile
       ports:
             - 8191:8191
