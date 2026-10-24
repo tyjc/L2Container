@@ -68,3 +68,15 @@ services:
         ports:
             - 9117:9117
         restart: unless-stopped
+    byparr:
+        image: ghcr.io/thephaseless/byparr:latest
+        restart: unless-stopped
+        build:
+          context: .
+          dockerfile: Dockerfile
+          shm_size: "1gb"
+          tmpfs:
+            - /tmp:exec,mode=1777,size=1G
+            - /cache:mode=1777,size=512M
+        ports:
+            - "8191:8191"
