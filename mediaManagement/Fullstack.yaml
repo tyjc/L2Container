@@ -55,16 +55,15 @@ services:
             - /mnt/data/appdata/plex:/config
             - /mnt/data/media:/data/media
         restart: unless-stopped
-    jackett:
-        image: lscr.io/linuxserver/jackett:latest
-        container_name: jackett
+    prowlarr:
+        image: lscr.io/linuxserver/prowlarr:latest
+        container_name: prowlarr
         environment:
             - PUID=1000
             - PGID=1000
             - TZ=Etc/UTC
         volumes:
-            - /mnt/data/appdata/jackett:/config
-            - /mnt/data:/data
+            - /mnt/data/appdata/prowlarr:/config
         ports:
-            - 9117:9117
-        restart: unless-s
+            - 9696:9696
+        restart: unless-stopped
