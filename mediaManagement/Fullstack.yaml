@@ -9,7 +9,7 @@ services:
             - WEBUI_PORT=8080
             - TORRENTING_PORT=6881
         volumes:
-            - /mnt/data/appdata/qbit:/config
+            - /data/appdata/qbit:/config
             - /mnt/data/torrents:/data/torrents
         ports:
             - 8080:8080
@@ -24,7 +24,7 @@ services:
             - PGID=1000
             - TZ=Etc/UTC
         volumes:
-            - /mnt/data/appdata/sonarr:/config
+            - /data/appdata/sonarr:/config
             - /mnt/data:/data
         ports:
             - 8989:8989
@@ -37,7 +37,7 @@ services:
             - PGID=1000 
             - TZ=Etc/UTC
         volumes:
-            - /mnt/data/appdata/radarr:/config 
+            - /data/appdata/radarr:/config 
             - /mnt/data:/data
         ports:
             - 7878:7878
@@ -52,7 +52,7 @@ services:
             - TZ=Etc/UTC
             - VERSION=docker
         volumes:
-            - /mnt/data/appdata/plex:/config
+            - /data/appdata/plex:/config
             - /mnt/data/media:/data/media
         restart: unless-stopped
     prowlarr:
@@ -63,7 +63,7 @@ services:
             - PGID=1000
             - TZ=Etc/UTC
         volumes:
-            - /mnt/data/appdata/prowlarr:/config
+            - /data/appdata/prowlarr:/config
         ports:
             - 9696:9696
         restart: unless-stopped
